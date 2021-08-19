@@ -6,3 +6,5 @@
 - [ ] TV Shows
 - [ ] Search
 - [ ] Detail
+
+## API Verbs

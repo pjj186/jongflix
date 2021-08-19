@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import Router from "Components/Router";
-import Header from "Components/Header";
+import GlobalStyles from "Components/GlobalStyles";
 
+// 컴포넌트를 종합하여 HTML에 보내주는 대표
 class App extends Component {
   render() {
     return (
       <>
-        <Header />
         <Router />
+        <GlobalStyles />
       </>
     );
   }
