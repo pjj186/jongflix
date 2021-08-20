@@ -11,12 +11,23 @@ class SearchContainer extends React.Component {
     error: null,
   };
 
-  handleSubmit = () => {
+  handleSubmit = (event) => {
+    event.preventDefault();
     const { searchTerm } = this.state;
     if (searchTerm !== "") {
       // searchTerm이 공백이 아닐 때, searchByTerm을 호출
       this.searchByTerm();
     }
+  };
+
+  //Input form에서 텍스트를 입력할 때 마다 호출됨
+  updateTerm = (event) => {
+    const {
+      target: { value },
+    } = event;
+    this.setState({
+      searchTerm: value,
+    });
   };
 
   searchByTerm = async () => {
@@ -50,6 +61,7 @@ class SearchContainer extends React.Component {
         error={error}
         searchTerm={searchTerm}
         handleSubmit={this.handleSubmit}
+        updateTerm={this.updateTerm}
       />
     );
   }
