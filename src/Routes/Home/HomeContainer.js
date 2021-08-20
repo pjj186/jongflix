@@ -28,7 +28,7 @@ class HomeContainer extends React.Component {
         upcoming,
         popular,
       });
-    } catch (error) {
+    } catch {
       this.setState({
         error: "Can't find movies information",
       });

@@ -33,7 +33,7 @@ class SearchContainer extends React.Component {
         movieResults,
         tvResults,
       });
-    } catch (error) {
+    } catch {
       this.setState({ error: "Can't find results." });
     } finally {
       this.setState({ loading: false });

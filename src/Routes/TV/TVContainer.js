@@ -28,7 +28,7 @@ class TVContainer extends React.Component {
         popular,
         airingToday,
       });
-    } catch (error) {
+    } catch {
       this.setState({
         error: "Can't find TV information.",
       });
