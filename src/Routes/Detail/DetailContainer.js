@@ -28,14 +28,14 @@ class DetailContainer extends React.Component {
     if (isNaN(parsedId)) {
       return push("/");
     }
+
     let result = null;
     try {
       if (isMovie) {
-        const request = await moviesApi.movieDetail(parsedId);
-        result = request.data;
+        // result = request.data
+        ({ data: result } = await moviesApi.movieDetail(parsedId));
       } else {
-        const request = await tvApi.showDetail(parsedId);
-        result = request.data;
+        ({ data: result } = await tvApi.showDetail(parsedId));
       }
     } catch {
       this.setState({ error: "Can't find anything." });
