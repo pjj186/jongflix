@@ -2,10 +2,10 @@
 
 ## Screens
 
-- [ ] Home
-- [ ] TV Shows
-- [ ] Search
-- [ ] Detail
+- [x] Home
+- [x] TV Shows
+- [x] Search
+- [x] Detail
 
 ## API Verbs
 
@@ -17,3 +17,11 @@
 - [x] TV Show Detail
 - [x] Movie Detail
 - [x] Search (TV, Movie)
+
+## Challenges
+
+- [ ] IMDB Link
+- [ ] Detail 안에 탭 추가 (유튜브 비디오, 제작회사 , 나라)
+- [ ] Collections Link
+- [ ] Colletions Route
+- [ ] TV Shows Season and Creators
