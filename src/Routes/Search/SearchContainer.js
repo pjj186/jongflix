@@ -7,6 +7,7 @@ class SearchContainer extends React.Component {
     movieResults: null,
     tvResults: null,
     searchTerm: "",
+    pastTerm: "",
     loading: false,
     error: null,
   };
@@ -17,6 +18,7 @@ class SearchContainer extends React.Component {
     if (searchTerm !== "") {
       // searchTerm이 공백이 아닐 때, searchByTerm을 호출
       this.searchByTerm();
+      this.handlePastTerm(searchTerm);
     }
   };
 
@@ -27,6 +29,12 @@ class SearchContainer extends React.Component {
     } = event;
     this.setState({
       searchTerm: value,
+    });
+  };
+
+  handlePastTerm = (term) => {
+    this.setState({
+      pastTerm: term,
     });
   };
 
@@ -52,7 +60,8 @@ class SearchContainer extends React.Component {
   };
 
   render() {
-    const { movieResults, tvResults, searchTerm, loading, error } = this.state;
+    const { movieResults, tvResults, searchTerm, loading, error, pastTerm } =
+      this.state;
     return (
       <SearchPresenter
         movieResults={movieResults}
@@ -62,6 +71,7 @@ class SearchContainer extends React.Component {
         searchTerm={searchTerm}
         handleSubmit={this.handleSubmit}
         updateTerm={this.updateTerm}
+        pastTerm={pastTerm}
       />
     );
   }
