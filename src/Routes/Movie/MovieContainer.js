@@ -14,6 +14,7 @@ class MovieContainer extends React.Component {
   async componentDidMount() {
     // 마운트가 되면 실행하는 함수, render() 이후 실행된다.
     try {
+      // nowPlaying = data.results
       const {
         data: { results: nowPlaying },
       } = await moviesApi.noewPlaying();
