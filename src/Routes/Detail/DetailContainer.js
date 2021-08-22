@@ -13,8 +13,13 @@ class DetailContainer extends React.Component {
       error: null,
       loading: true,
       isMovie: pathname.includes("/movie/"),
+      choiceTab: "Trailer",
     };
   }
+
+  changeTab = (word) => {
+    this.setState({ choiceTab: word });
+  };
 
   async componentDidMount() {
     const {
@@ -45,8 +50,17 @@ class DetailContainer extends React.Component {
   }
 
   render() {
-    const { result, error, loading } = this.state;
-    return <DetailPresenter result={result} error={error} loading={loading} />;
+    const { result, error, loading, choiceTab, isMovie } = this.state;
+    return (
+      <DetailPresenter
+        result={result}
+        error={error}
+        loading={loading}
+        choiceTab={choiceTab}
+        changeTab={this.changeTab}
+        isMovie={isMovie}
+      />
+    );
   }
 }
 

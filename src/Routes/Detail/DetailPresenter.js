@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Loader from "Components/Loader";
 import Message from "Components/Message";
 import Helmet from "react-helmet";
+import ReactPlayer from "react-player";
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -50,6 +51,7 @@ const Data = styled.div`
 
 const Title = styled.div`
   font-size: 32px;
+  font-weight: 600;
   margin-bottom: 10px;
 `;
 
@@ -64,13 +66,136 @@ const Divider = styled.span`
 `;
 
 const Overview = styled.p`
-  font-size: 12px;
+  font-size: 16px;
   opacity: 0.7;
   line-height: 1.5;
-  width: 50%;
+  width: 100%;
+  margin-bottom: 100px;
 `;
 
-const DetailPresenter = ({ result, error, loading }) =>
+const IMDbLink = styled.a`
+  background-color: #e2b616;
+  color: #000000;
+  padding: 4px;
+  font-size: 16px;
+  font-weight: 800;
+  border-radius: 5px;
+`;
+
+const Tap = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: rgba(20, 20, 20, 0.8);
+  height: 30px;
+`;
+
+const List = styled.ul`
+  display: flex;
+`;
+
+const TabItem = styled.li`
+  width: 80px;
+  height: 30px;
+  text-align: center;
+  border-bottom: 3px solid
+    ${(props) => (props.current ? "white" : "transparent")};
+  cursor: pointer;
+  transition: border-bottom 0.5s ease-in-out;
+`;
+
+const Tabname = styled.div`
+  height: 30px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const TabContent = styled.div`
+  width: 100%;
+  height: 70%;
+  margin-top: 20px;
+`;
+
+const VideoContainer = styled.div`
+  display: ${(props) => (props.current ? "flex" : "none")};
+  overflow-x: scroll;
+  overflow-y: hidden;
+`;
+
+const VideoContent = styled.div`
+  margin-right: 20px;
+`;
+
+const ProductionContainer = styled.div`
+  display: ${(props) => (props.current ? "flex" : "none")};
+`;
+
+const ProductionContent = styled.div`
+  margin-right: 20px;
+  text-align: center;
+`;
+
+const ProductionLogo = styled.div`
+  background-image: url(${(props) => props.bgImg});
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 180px;
+  width: 180px;
+  background-position: center center;
+  margin-bottom: 8px;
+`;
+
+const CollectionContainer = styled.div`
+  display: ${(props) => (props.current ? "flex" : "none")};
+  overflow-x: scroll;
+  overflow-y: hidden;
+`;
+
+const CollectionContent = styled.div`
+  margin-right: 20px;
+  text-align: center;
+`;
+
+const CollectionLogo = styled.div`
+  background-image: url(${(props) => props.bgImg});
+  height: 180px;
+  width: 120px;
+  background-size: cover;
+  border-radius: 4px;
+  background-position: center center;
+  margin-bottom: 8px;
+`;
+
+const SeasonContent = styled.div`
+  margin-right: 20px;
+  text-align: center;
+`;
+
+const SeasonLogo = styled.div`
+  background-image: url(${(props) => props.bgImg});
+  height: 180px;
+  width: 120px;
+  background-size: cover;
+  border-radius: 4px;
+  background-position: center center;
+  margin-bottom: 8px;
+`;
+
+const Empty = styled.div`
+  width: 100%;
+  height: 8px;
+`;
+
+const DetailPresenter = ({
+  result,
+  error,
+  loading,
+  choiceTab,
+  changeTab,
+  isMovie,
+}) =>
   loading ? (
     <>
       <Helmet>
@@ -83,10 +208,7 @@ const DetailPresenter = ({ result, error, loading }) =>
   ) : (
     <Container>
       <Helmet>
-        <title>
-          {result.original_title ? result.original_title : result.original_name}{" "}
-          | JongFlix
-        </title>
+        <title>{result.title ? result.title : result.name} | JongFlix</title>
       </Helmet>
       <Backdrop
         bgImage={`https://image.tmdb.org/t/p/original${result.backdrop_path}`}
@@ -100,11 +222,7 @@ const DetailPresenter = ({ result, error, loading }) =>
           }
         />
         <Data>
-          <Title>
-            {result.original_title
-              ? result.original_title
-              : result.original_name}
-          </Title>
+          <Title>{result.title ? result.title : result.name}</Title>
           <ItemContainer>
             <Item>
               {result.release_date
@@ -129,8 +247,122 @@ const DetailPresenter = ({ result, error, loading }) =>
                     : `${genre.name} / `
                 )}
             </Item>
+            <Item>
+              {result.production_countries.length > 0 && (
+                <>
+                  <Divider>•</Divider>
+                  {result.production_countries[0].name}
+                </>
+              )}
+            </Item>
+            <Item>
+              {result.imdb_id && (
+                <>
+                  <Divider>•</Divider>
+                  <IMDbLink
+                    href={`https://imdb.com/title/${result.imdb_id}`}
+                    target="_blank"
+                  >
+                    IMDb
+                  </IMDbLink>
+                </>
+              )}
+            </Item>
           </ItemContainer>
           <Overview>{result.overview}</Overview>
+          <Tap>
+            <List>
+              <TabItem
+                current={choiceTab === "Trailer"}
+                onClick={() => changeTab("Trailer")}
+              >
+                <Tabname>Trailers</Tabname>
+              </TabItem>
+              <TabItem
+                current={choiceTab === "Production"}
+                onClick={() => changeTab("Production")}
+              >
+                <Tabname>Productions</Tabname>
+              </TabItem>
+              <TabItem
+                current={choiceTab === "Collections"}
+                onClick={() => changeTab("Collections")}
+              >
+                <Tabname>{isMovie ? "Collections" : "Seasons"}</Tabname>
+              </TabItem>
+            </List>
+          </Tap>
+          <TabContent>
+            <VideoContainer current={choiceTab === "Trailer"}>
+              {result.videos.results.length > 0 &&
+                result.videos.results.map((video, index) => (
+                  <VideoContent key={index}>
+                    <ReactPlayer
+                      url={`https://youtu.be/${video.key}`}
+                      controls
+                      width={480}
+                      height={272}
+                    />
+                    <Empty></Empty>
+                  </VideoContent>
+                ))}
+            </VideoContainer>
+            <ProductionContainer current={choiceTab === "Production"}>
+              {result.production_companies.length > 0 &&
+                result.production_companies.map((production, index) => (
+                  <ProductionContent key={index}>
+                    <>
+                      <ProductionLogo
+                        bgImg={
+                          production.logo_path
+                            ? `https://image.tmdb.org/t/p/w300${production.logo_path}`
+                            : require("../../assets/noimage.jpg").default
+                        }
+                      ></ProductionLogo>
+                      {production.name}
+                    </>
+                  </ProductionContent>
+                ))}
+            </ProductionContainer>
+            <CollectionContainer current={choiceTab === "Collections"}>
+              <>
+                {isMovie ? (
+                  <>
+                    {result.belongs_to_collection && (
+                      <CollectionContent>
+                        <CollectionLogo
+                          bgImg={
+                            result.belongs_to_collection.poster_path
+                              ? `https://image.tmdb.org/t/p/w300${result.belongs_to_collection.poster_path}`
+                              : require("../../assets/noimage.jpg").default
+                          }
+                        ></CollectionLogo>
+                        {result.belongs_to_collection.name}
+                        <Empty></Empty>
+                      </CollectionContent>
+                    )}
+                  </>
+                ) : (
+                  <>
+                    {result.seasons.length > 0 &&
+                      result.seasons.map((season, index) => (
+                        <SeasonContent key={index}>
+                          <SeasonLogo
+                            bgImg={
+                              season.poster_path
+                                ? `https://image.tmdb.org/t/p/w300${season.poster_path}`
+                                : require("../../assets/noimage.jpg").default
+                            }
+                          ></SeasonLogo>
+                          {season.name}
+                          <Empty></Empty>
+                        </SeasonContent>
+                      ))}
+                  </>
+                )}
+              </>
+            </CollectionContainer>
+          </TabContent>
         </Data>
       </Content>
     </Container>

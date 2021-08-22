@@ -20,8 +20,5 @@
 
 ## Challenges
 
-- [ ] IMDB Link
-- [ ] Detail 안에 탭 추가 (유튜브 비디오, 제작회사 , 나라)
-- [ ] Collections Link
-- [ ] Colletions Route
-- [ ] TV Shows Season and Creators
+- [x] IMDB Link
+- [x] Detail 안에 탭 추가 (유튜브 비디오, 제작회사 , 나라)

@@ -41,7 +41,10 @@ const HeaderComponent = ({ location: { pathname } }) => {
     <Header>
       <List>
         <Item current={pathname === "/"}>
-          <SLink to="/">Movies</SLink>
+          <SLink to="/">Home</SLink>
+        </Item>
+        <Item current={pathname === "/movie"}>
+          <SLink to="/movie">Movies</SLink>
         </Item>
         <Item current={pathname === "/tv"}>
           <SLink to="/tv">TV</SLink>
