@@ -18,7 +18,6 @@
 - [x] Movie Detail
 - [x] Search (TV, Movie)
 
-## Challenges
+## Preview:
 
-- [x] IMDB Link
-- [x] Detail 안에 탭 추가 (유튜브 비디오, 제작회사 , 나라)
+[netlify](https://angry-wozniak-26967a.netlify.app/)
