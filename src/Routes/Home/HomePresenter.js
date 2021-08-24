@@ -122,7 +122,7 @@ const PosterContainer = styled.div`
   display: flex;
   background-color: rgba(0, 0, 0, 0.3);
   top: 350px;
-  left: 30px;
+  left: 40px;
   width: 50%;
   height: 50%;
 `;
