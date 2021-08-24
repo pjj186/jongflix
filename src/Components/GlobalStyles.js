@@ -16,6 +16,17 @@ const GlobalStyles = createGlobalStyle`
         background-color: rgba(20, 20, 20, 1);
         color: white;
         padding-top: 50px;
+        overflow-y: scroll;
+        &::-webkit-scrollbar {
+            height: 8px;
+            width: 5px;
+            border-radius: 6px;
+            background: rgba(0, 0, 0, 0.8);
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: rgba(255, 255, 255, 0.4);
+            border-radius: 6px;
+        }
     }
 `;
 

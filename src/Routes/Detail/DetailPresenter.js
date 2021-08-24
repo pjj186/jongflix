@@ -122,6 +122,16 @@ const VideoContainer = styled.div`
   display: ${(props) => (props.current ? "flex" : "none")};
   overflow-x: scroll;
   overflow-y: hidden;
+  &::-webkit-scrollbar {
+    height: 8px;
+    width: 5px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.4);
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 6px;
+  }
 `;
 
 const VideoContent = styled.div`
@@ -151,6 +161,16 @@ const CollectionContainer = styled.div`
   display: ${(props) => (props.current ? "flex" : "none")};
   overflow-x: scroll;
   overflow-y: hidden;
+  &::-webkit-scrollbar {
+    height: 8px;
+    width: 5px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.4);
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 6px;
+  }
 `;
 
 const CollectionContent = styled.div`
