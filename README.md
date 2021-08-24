@@ -1,5 +1,7 @@
 # JongFlix
 
+현재 상영중, 개봉예정, 인기있는 영화 그리고 TV드라마들의 정보를 알아봐요!
+
 ## Screens
 
 - [x] Home
@@ -20,4 +22,4 @@
 
 ## Preview:
 
-[netlify](https://angry-wozniak-26967a.netlify.app/)
+[Netlify](https://angry-wozniak-26967a.netlify.app/)
