@@ -60,6 +60,7 @@ class SearchContainer extends React.Component {
   };
 
   render() {
+    console.log("Search Re-render");
     const { movieResults, tvResults, searchTerm, loading, error, pastTerm } =
       this.state;
     return (

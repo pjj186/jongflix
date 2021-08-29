@@ -41,6 +41,7 @@ class MovieContainer extends React.Component {
   }
 
   render() {
+    console.log("Movie Re-render");
     const { nowPlaying, upcoming, popular, error, loading } = this.state;
     return (
       <MoviePresenter

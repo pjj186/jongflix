@@ -38,6 +38,7 @@ class TVContainer extends React.Component {
   }
 
   render() {
+    console.log("TV Re-render");
     const { topRated, popular, airingToday, loading, error } = this.state;
     return (
       <TVPresenter
