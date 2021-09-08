@@ -353,6 +353,7 @@ const DetailPresenter = ({
                       ></ProductionLogo>
                       {production.name}
                     </>
+                    <Empty></Empty>
                   </ProductionContent>
                 ))}
             </ProductionContainer>
