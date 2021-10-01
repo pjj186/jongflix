@@ -82,4 +82,4 @@ MoviePresenter.propTypes = {
   loading: PropTypes.bool.isRequired,
 };
 
-export default MoviePresenter;
+export default React.memo(MoviePresenter);

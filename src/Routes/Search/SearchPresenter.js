@@ -100,4 +100,4 @@ SearchPresenter.propTypes = {
   updateTerm: PropTypes.func.isRequired,
 };
 
-export default SearchPresenter;
+export default React.memo(SearchPresenter);

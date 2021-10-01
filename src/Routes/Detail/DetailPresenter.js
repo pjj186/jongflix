@@ -407,4 +407,4 @@ DetailPresenter.propTypes = {
   loading: PropTypes.bool.isRequired,
 };
 
-export default DetailPresenter;
+export default React.memo(DetailPresenter);

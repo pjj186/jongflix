@@ -208,4 +208,4 @@ HomePresenter.propTypes = {
   loading: PropTypes.bool.isRequired,
 };
 
-export default HomePresenter;
+export default React.memo(HomePresenter);
