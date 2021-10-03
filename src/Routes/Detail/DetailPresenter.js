@@ -254,7 +254,6 @@ const DetailPresenter = ({
           }
         />
         <Data>
-          {console.log(result)}
           <Title>{result.title ? result.title : result.name}</Title>
           <ItemContainer>
             <Item>
