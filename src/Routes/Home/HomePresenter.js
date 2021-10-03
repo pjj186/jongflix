@@ -104,7 +104,7 @@ const PopularMovie = styled.div`
   position: absolute;
   top: 70px;
   left: 20px;
-  font-size: 40px;
+  font-size: 65px;
   font-weight: 900;
   text-shadow: 10px 10px 10px black;
   z-index: 2;
