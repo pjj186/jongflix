@@ -258,10 +258,10 @@ const DetailPresenter = ({
           <ItemContainer>
             <Item>
               {result.release_date
-                ? !result.release_date === ""
+                ? !result.release_date == ""
                   ? result.release_date.substring(0, 4)
                   : "No Data"
-                : !result.first_air_date === ""
+                : !result.first_air_date == ""
                 ? result.first_air_date.substring(0, 4)
                 : "No Data"}
             </Item>
