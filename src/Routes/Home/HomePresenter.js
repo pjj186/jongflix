@@ -106,6 +106,7 @@ const PopularMovie = styled.div`
   left: 20px;
   font-size: 40px;
   font-weight: 900;
+  text-shadow: 10px 10px 10px black;
   z-index: 2;
 `;
 
@@ -160,9 +161,15 @@ const Data = styled.div`
 `;
 
 const SLink = styled(Link)`
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 900;
   color: white;
+  background-color: #eb3006a2;
+  padding: 3px;
+  border-radius: 5px;
+  &:hover {
+    background-color: #eb2f06;
+  }
 `;
 
 const HomePresenter = ({ popular, error, loading }) =>
@@ -192,7 +199,7 @@ const HomePresenter = ({ popular, error, loading }) =>
                 <Data>
                   <Title>{item.title}</Title>
                   <Overview>{item.overview}</Overview>
-                  <SLink to={`movie/${item.id}`}>MORE INFO?</SLink>
+                  <SLink to={`movie/${item.id}`}>MORE INFO</SLink>
                 </Data>
               </PosterContainer>
             </BackdropImage>
