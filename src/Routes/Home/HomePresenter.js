@@ -1,12 +1,12 @@
-import React from "react";
-import styled from "styled-components";
-import PropTypes from "prop-types";
-import Loader from "Components/Loader";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
-import Helmet from "react-helmet";
-import { Link } from "react-router-dom";
+import React from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import Loader from 'Components/Loader';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import Slider from 'react-slick';
+import Helmet from 'react-helmet';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div``;
 
@@ -61,7 +61,7 @@ const Wrap = styled.div`
     background: transparent;
   }
   .slick-dots li button:before {
-    font-family: "slick";
+    font-family: 'slick';
     font-size: 6px;
     line-height: 20px;
 
@@ -72,7 +72,7 @@ const Wrap = styled.div`
     width: 20px;
     height: 20px;
 
-    content: "•";
+    content: '•';
     text-align: center;
 
     opacity: 0.25;
@@ -172,8 +172,8 @@ const SLink = styled(Link)`
   }
 `;
 
-const HomePresenter = ({ popular, error, loading }) =>
-  loading ? (
+const HomePresenter = ({ popular, error, loading }) => {
+  return loading ? (
     <>
       <Helmet>
         <title>Loading | JongFlix</title>
@@ -187,7 +187,7 @@ const HomePresenter = ({ popular, error, loading }) =>
       </Helmet>
       <PopularMovie>POPULAR MOVIES</PopularMovie>
       <Slider {...settings}>
-        {popular.map((item, index) => (
+        {popular?.map((item, index) => (
           <Container key={index}>
             <BackdropImage
               bgImg={`https://image.tmdb.org/t/p/original${item.backdrop_path}`}
@@ -208,6 +208,7 @@ const HomePresenter = ({ popular, error, loading }) =>
       </Slider>
     </Wrap>
   );
+};
 
 HomePresenter.propTypes = {
   popular: PropTypes.array,
